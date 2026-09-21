@@ -66,20 +66,27 @@ torch_mir_eval
 Cuda 12.8 strongly recommended!
 
 ### Dataset
-The dataset used in the experiments can be downloaded [here](https://doi.org/10.5281/zenodo.2599196), the separate test split [here](https://doi.org/10.5281/zenodo.3377088). The dataset can be downsampled to 16kHz using the provided "resample16kHz.py". The dcasedataset.py script is used to extract individual ambisonic sounds and mix them together for MixIT.
+The dataset used in the experiments can be downloaded [here](https://doi.org/10.5281/zenodo.2599196), the separate test split [here](https://doi.org/10.5281/zenodo.3377088). The dataset can be downsampled to 16kHz using the provided `resample16kHz.py`. The `dcasedataset.py` script is used to extract individual ambisonic sounds and mix them together for MixIT.
 
 The files need to be arranged in the following way:
 
-`datasets/dcase2019_16kHz`
-            ↳ `train`
-                ↳ `split1_ir0_ov1_1.csv` ... `split3_ir4_ov2_100.wav` (must include .wav and .csv filed from split 1-3)
-            ↳ validation
-                ↳ `split4_ir0_ov1_1.csv` ... `split4_ir4_ov2_100.wav` (Split 4 was used for validation please copy and remove it from the train folder)
-            ↳ test
-                ↳ `split0_ir0_ov1_1.csv` ... `split0_ir4_ov2_100.wav` (available via test download)
+```text
+datasets/dcase2019_16kHz/
+├── train/
+│   └── split1_ir0_ov1_1.csv ... split3_ir4_ov2_100.wav
+│       (must include .wav and .csv files from splits 1–3)
+│
+├── validation/
+│   └── split4_ir0_ov1_1.csv ... split4_ir4_ov2_100.wav
+│       (Split 4 was used for validation; please copy it and remove it
+│        from the train folder)
+│
+└── test/
+    └── split0_ir0_ov1_1.csv ... split0_ir4_ov2_100.wav
+        (available via the test download)
+```
 
-
-Please edit the lib/utils.py file constants instead of using the arguments to set dataset paths for training. (lines 9-15)
+Please edit the `lib/utils.py` file constants instead of using the arguments to set dataset paths for training. (lines 9-15)
 
 
 Most important are:
